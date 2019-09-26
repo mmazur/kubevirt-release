@@ -7,10 +7,11 @@ branches:
   - master
 
 env:
-  - REPOS="kubevirt"
+  - REPOS="kubevirt containerized-data-importer"
 
 before_script:
   - ./checkout-gh-pages.sh
+  - for repo in $REPOS; do mkdir -p gh-pages/$repo; done
 
 script:
   - for repo in $REPOS; do ./update-repo-releases.py $repo; done
