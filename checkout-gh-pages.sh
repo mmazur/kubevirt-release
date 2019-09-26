@@ -6,3 +6,4 @@ cp -a .git gh-pages
 cd gh-pages
 git fetch origin +gh-pages:gh-pages
 git checkout gh-pages
+git reset --hard

@@ -2,13 +2,18 @@ language: python
 python:
   - "3.7"
 
+branches:
+  only:
+  - master
+
+env:
+  - REPOS="kubevirt"
+
 before_script:
   - ./checkout-gh-pages.sh
 
 script:
-  - date > gh-pages/date.txt
-  - true # fetch versions for a given projects
-  - true # verify that it looks ok
+  - for repo in $REPOS; do ./update-repo-releases.py $repo; done
 
 # TODO: change this to a custom script to have control of commit msgs
 deploy:
