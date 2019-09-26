@@ -1,0 +1,20 @@
+language: python
+python:
+  - "3.7"
+
+before_script:
+  - ./checkout-gh-pages.sh
+
+script:
+  - date > gh-pages/date.txt
+  - true # fetch versions for a given projects
+  - true # verify that it looks ok
+
+# TODO: change this to a custom script to have control of commit msgs
+deploy:
+  provider: pages
+  local_dir: gh-pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+
